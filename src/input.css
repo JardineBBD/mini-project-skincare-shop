@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@theme {
+  --background-image-mainpic: url('../img/mainpic.jpg');
+}

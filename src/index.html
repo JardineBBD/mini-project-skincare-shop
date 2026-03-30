@@ -1,0 +1,424 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <script defer src="./index.js"></script>
+</head>
+
+<body>
+    <!-- mini header -->
+    <div class="bg-[#091413] grid grid-cols-3 gap-4 p-4 items-center">
+        <!-- contact and email -->
+        <div class="flex flex-wrap justify-center items-center xl:justify-start gap-4  xl:items-start">
+            <p class="text-gray-400 text-xs xl:text-sm">+222-123-4567</p>
+            <p class="text-gray-400 text-xs xl:text-sm">skincare@gmail.com</p>
+        </div>
+
+        <!-- sign up and offer -->
+        <div class="flex justify-center items-center text-center flex-wrap">
+            <p class="text-gray-400 text-xs xl:text-sm">Sign up for 10% off your first order: </p>
+            <a href="" class="text-white text-xs xl:text-sm underline font-bold"> Sign Up</a>
+        </div>
+
+        <!-- Language and currency -->
+        <!-- Currency Dropdown -->
+        <div class="grid grid-cols-2 xl:flex xl:justify-end">
+            <div class="relative" id="currency-root">
+                <button onclick="toggleMenu('currency')"
+                    class="flex items-center gap-1 text-gray-300 hover:text-white text-xs px-3 py-1 transition-colors duration-150 xl:text-sm">
+                    <span id="currency-label">(USD$)</span>
+                    <svg id="currency-chevron" class="w-3.5 h-3.5 transition-transform duration-200" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+
+                <div id="currency-menu" class="hidden absolute right-0 top-full mt-1 w-56
+                  bg-[#1a1a1a] border border-white/10 shadow-xl z-50 py-1
+                  transition-all duration-150 opacity-0 -translate-y-1">
+                    <ul id="currency-list"></ul>
+                </div>
+            </div>
+
+            <!-- Language Dropdown -->
+            <div class="relative" id="language-root">
+                <button onclick="toggleMenu('language')"
+                    class="flex items-center gap-1 text-gray-300 hover:text-white text-xs px-3 py-1 transition-colors duration-150 xl:text-sm">
+                    <span id="language-label">En</span>
+                    <svg id="language-chevron" class="w-3.5 h-3.5 transition-transform duration-200" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+
+                <div id="language-menu" class="hidden absolute right-0 top-full mt-1 w-40
+                  bg-[#1a1a1a] border border-white/10 shadow-xl z-50 py-1
+                  transition-all duration-150 opacity-0 -translate-y-1">
+                    <ul id="language-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- main -->
+    <div class="w-full h-176 bg-mainpic bg-cover bg-center ">
+        <!-- nav -->
+        <div class="grid grid-cols-3 gap-4 p-4">
+            <img src="../img/logo.jpg" alt="logo" class="w-16 h-16  rounded-full">
+
+            <div class="flex justify-end gap-5 px-4 py-3 col-span-2 xl:row-start-1">
+                <!-- Search -->
+                <button class="text-black hover:text-yellow-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+                    </svg>
+                </button>
+
+                <!-- User / Account -->
+                <button class="text-black hover:text-yellow-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                    </svg>
+                </button>
+
+                <!-- Wishlist / Heart with badge -->
+                <button class="relative text-black hover:text-yellow-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                    <span class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold
+      w-4 h-4 rounded-full flex items-center justify-center leading-none">0</span>
+                </button>
+
+                <!-- Cart / Shopping Bag with badge -->
+                <button class="relative text-black hover:text-yellow-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.256-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
+                    </svg>
+                    <span class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold
+      w-4 h-4 rounded-full flex items-center justify-center leading-none">0</span>
+                </button>
+
+            </div>
+
+            <div
+                class="flex justify-center col-span-3 gap-4 xl:row-start-1 xl:row-end-2 xl:col-start-2 xl:col-end-3 xl:items-center">
+                <a href="#" class="text-black">HOME</a>
+                <a href="#" class="text-black">SHOP</a>
+                <a href="#" class="text-black">PRODUCTS</a>
+                <a href="#" class="text-black">BLOG</a>
+                <a href="#" class="text-black">PAGE</a>
+            </div>
+
+        </div>
+
+        <!-- main impact title -->
+        <div class="flex flex-col justify-center items-center mt-14 w-72 mx-auto xl:mt-28">
+            <h1 class="text-white text-6xl"> Perfect Skincare Solutions</h1>
+            <p class="text-white mt-3"> Your journey to healthy, glowing skin starts here.</p>
+            <a href="#" class="bg-white px-6 py-4 rounded-4xl font-bold mt-8">EXPLORE NOW</a>
+
+        </div>
+
+    </div>
+
+    <!-- little text below image -->
+    <div class="flex flex-row flex-nowrap justify-center py-1.5 px-3 items-center bg-[#F3E4C9]">
+        <p class="text-black font-bold">FREE SHIPPING ON ORDERS OVER $50</p>
+    </div>
+
+    <!-- Show Products category -->
+    <div class="flex flex-col justify-center items-center mt-10">
+        <p class="text-3xl text-gray-600">YOU MIGHT LIKE</p>
+        <p class="text-gray-600 mt-3 text-xs xl:text-sm">Our product designed for everyone</p>
+        <!-- product category -->
+        <div class="flex flex-wrap justify-center items-center">
+            <div class="flex flex-col justify-center items-center gap-4 mt-4 p-4 xl:w-64">
+                <a href="#" class="flex flex-col justify-center items-center gap-4 mt-4 p-4">
+                    <img src="https://cdn.pixabay.com/photo/2024/02/21/13/15/lipstick-8587707_1280.jpg" alt="click me"
+                        class="w-56 h-auto object-cover rounded-lg">
+                    <p class="text-gray-600 text-lg font-bold">Lipstick</p>
+                </a>
+            </div>
+            <div class="flex flex-col justify-center items-center gap-4 p-4 xl:w-64">
+                <a href="#" class="flex flex-col justify-center items-center gap-4 mt-4 p-4">
+                    <img src="https://www.vinevida.com/cdn/shop/articles/essential-oil_067b7328-d9d0-43a2-8b6b-c36d7fbbf33d.jpg?v=1770094085"
+                        alt="click me" class="w-56 h-auto object-cover rounded-lg">
+                    <p class="text-gray-600 text-lg font-bold">Essential oil</p>
+                </a>
+            </div>
+            <div class="flex flex-col justify-center items-center gap-4 p-4 xl:w-64">
+                <a href="#" class="flex flex-col justify-center items-center gap-4 mt-4 p-4">
+                    <img src="https://img.freepik.com/free-photo/face-care-beauty-treatments-young-woman-with-cloth-moisturizing-mask-her-face-isolated-gray-wall_231208-1516.jpg?semt=ais_rp_50_assets&w=740&q=80"
+                        alt="click me" class="w-56 h-auto object-cover rounded-lg">
+                    <p class="text-gray-600 text-lg font-bold">Mask skin</p>
+                </a>
+            </div>
+            <div class="flex flex-col justify-center items-center gap-4 p-4 xl:w-64">
+                <a href="#" class="flex flex-col justify-center items-center gap-4 mt-4 p-4">
+                    <img src="https://media.istockphoto.com/id/519356382/photo/makeup-products-to-even-out-skin-tone-and-complexion.jpg?s=612x612&w=0&k=20&c=guXlDzGNa27seg96bwyJQ5mCQIDmamT2xRHSqD0NL18="
+                        alt="click me" class="w-56 h-auto object-cover rounded-lg">
+                    <p class="text-gray-600 text-lg font-bold">Makeup</p>
+                </a>
+            </div>
+            <div class="flex flex-col justify-center items-center gap-4 p-4 xl:w-64">
+                <a href="#" class="flex flex-col justify-center items-center gap-4 mt-4 p-4">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/013/629/949/small/open-cream-jar-and-dropper-bottle-with-face-oil-on-a-ceramic-tray-cosmetic-container-mockups-background-for-branding-and-packaging-presentation-natural-skincare-beauty-product-concept-photo.jpg"
+                        alt="click me" class="w-56 h-auto object-cover rounded-lg">
+                    <p class="text-gray-600 text-lg font-bold">Skincare</p>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Show Products offer -->
+    <div class="flex flex-col justify-center items-center mt-10 ">
+        <p class="text-3xl text-gray-600">TOP OFFERS</p>
+        <p class="text-gray-600 mt-3 text-xs xl:text-sm">Our product designed for everyone</p>
+        <div class="felx flex-col xl:grid xl:grid-cols-4 gap-2 mt-3">
+            <a href="" class="flex flex-col justify-center items-center mt-4 p-4">
+                <div class="w-72 h-96">
+                    <img src="../img/product_offer1.png" alt="Skincare" class="w-full h-auto object-cover rounded-lg">
+                </div>
+                <p class="text-gray-600 text-lg">AURA</p>
+                <p class="text-gray-600 text-lg">SILKEN IRIS NECTAR</p>
+                <div class="flex items-center justify-center gap-0.5 text-gray-600 text-xl">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="text-gray-600">$100.00</p>
+            </a>
+            <a href="" class="flex flex-col justify-center items-center mt-4 p-4">
+                <div class="w-72 h-96">
+                    <img src="../img/product_offer2.png" alt="Skincare" class="w-full h-auto object-cover rounded-lg">
+                </div>
+                <p class="text-gray-600 text-lg">AURA</p>
+                <p class="text-gray-600 text-lg">COSMIC ORCHID ESSENCE</p>
+                <div class="flex items-center justify-center gap-0.5 text-gray-600 text-xl">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="text-gray-600">$130.00</p>
+            </a>
+            <a href="" class="flex flex-col justify-center items-center mt-4 p-4">
+                <div class="w-72 h-96">
+                    <img src="../img/product_offer3.png" alt="Skincare" class="w-full h-auto object-cover rounded-lg">
+                </div>
+                <p class="text-gray-600 text-lg">AURA</p>
+                <p class="text-gray-600 text-lg">SCARLET PETAL INFUSION</p>
+                <div class="flex items-center justify-center gap-0.5 text-gray-600 text-xl">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="text-gray-600">$90.00</p>
+            </a>
+            <a href="" class="flex flex-col justify-center items-center mt-4 p-4">
+                <div class="w-72 h-96">
+                    <img src="../img/product_offer4.png" alt="Skincare" class="w-full h-auto object-cover rounded-lg">
+                </div>
+                <p class="text-gray-600 text-lg">AURA</p>
+                <p class="text-gray-600 text-lg">ROSE GOLD HARVEST</p>
+                <div class="flex items-center justify-center gap-0.5 text-gray-600 text-xl">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="text-gray-600">$145.00</p>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Products promote approve -->
+    <div class="grid grid-cols-1 justify-center items-center mt-10 px-8 w-full xl:grid-cols-2">
+        <img src="https://img.freepik.com/free-photo/beauty-skincare-products-bathroom_53876-133303.jpg?semt=ais_incoming&w=740&q=80"
+            class="w-96 h-auto object-cover rounded-lg xl:h-full xl:w-auto xl:object-cover xl:rounded-l-lg"
+            alt="skincare">
+        <div class="bg-[#F3E4C9] justify-center items-center text-center rounded-lg py-8 xl:h-full xl:rounded-lg">
+            <img src="../img/skincare_approved.png" alt="approve"
+                class="w-64 h-auto mx-auto mt-10 mix-blend-multiply xl:w-80 xl:h-auto">
+            <p class="text-black font-mono text-xl mt-12 xl:text-3xl">SUMMER SALE</p>
+            <p class="text-black font-mono text-4xl mt-4 xl:text-6xl">Prepare your skin</p>
+            <p class="text-black font-mono text-sm mt-4 xl:text-xl xl:mt-8">Say goodbye to dry skin and hello to radiant
+                skin. </p>
+            <a href=""
+                class="inline-block bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 mt-8 text-xl xl:text-2xl xl:py-4 xl:px-6 xl:mt-16">BUY
+                NOW $45.00</a>
+        </div>
+    </div>
+
+    <!-- Products Top sellers -->
+    <div class="flex flex-col justify-center items-center mt-10 ">
+        <p class="text-3xl text-gray-600">TOP SELLING</p>
+        <p class="text-gray-600 mt-3 text-xs xl:text-sm">Our product designed for everyone</p>
+        <div class="felx flex-col justify-center items-center xl:grid xl:grid-cols-4 gap-2 mt-3">
+            <a href="" class="flex flex-col justify-center items-center mt-4 p-4">
+                <div class="w-72 h-96">
+                    <img src="../img/product_topsell1.png" alt="Skincare"
+                        class="w-52 h-auto object-cover rounded-lg mx-auto">
+                </div>
+                <p class="text-gray-600 text-lg">AURA</p>
+                <p class="text-gray-600 text-lg">AURORA Ocean Harvest Vitality Serum</p>
+                <div class="flex items-center justify-center gap-0.5 text-gray-600 text-xl">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="text-gray-600">$100.00</p>
+            </a>
+            <a href="" class="flex flex-col justify-center items-center mt-4 p-4">
+                <div class="w-72 h-96">
+                    <img src="../img/product_topsell2.png" alt="Skincare"
+                        class="w-52 h-auto object-cover rounded-lg mx-auto">
+                </div>
+                <p class="text-gray-600 text-lg">LUMINA</p>
+                <p class="text-gray-600 text-lg">CELESTIAL Argan Glow</p>
+                <div class="flex items-center justify-center gap-0.5 text-gray-600 text-xl">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="text-gray-600">$130.00</p>
+            </a>
+            <a href="" class="flex flex-col justify-center items-center mt-4 p-4">
+                <div class="w-72 h-96">
+                    <img src="../img/product_topsell3.png" alt="Skincare"
+                        class="w-52 h-auto object-cover rounded-lg mx-auto">
+                </div>
+                <p class="text-gray-600 text-lg">AURA</p>
+                <p class="text-gray-600 text-lg">Solar Radiance Serum</p>
+                <div class="flex items-center justify-center gap-0.5 text-gray-600 text-xl">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="text-gray-600">$90.00</p>
+            </a>
+            <a href="" class="flex flex-col justify-center items-center mt-4 p-4">
+                <div class="w-72 h-96">
+                    <img src="../img/product_topsell4.png" alt="Skincare"
+                        class="w-52 h-auto object-cover rounded-lg mx-auto">
+                </div>
+                <p class="text-gray-600 text-lg">AURA</p>
+                <p class="text-gray-600 text-lg">SUN VITAL Golden Dew</p>
+                <div class="flex items-center justify-center gap-0.5 text-gray-600 text-xl">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                </div>
+                <p class="text-gray-600">$145.00</p>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Follow Us -->
+    <div class="flex flex-col my-9 justify-center items-center gap-3 p-8 mx-auto">
+        <p class="text-gray-600 text-3xl">FOLLOW US</p>
+        <p class="text-gray-600 flex-wrap text-center px-4">Inspire and let yourself be inspired, from one unique
+            fashion to another.</p>
+        <div class="grid grid-cols-2 p-2 gap-2 xl:grid-cols-4">
+            <a href="" class="w-full h-auto">
+                <img src="../img/followus_1.jpg" class="w-52 h-52 bg-cover">
+            </a>
+            <a href="" class="w-full h-auto">
+                <img src="../img/followus_2.jpg" class="w-52 h-52 bg-cover">
+            </a>
+            <a href="" class="w-full h-auto">
+                <img src="../img/followus_3.jpg" class="w-52 h-52 bg-cover">
+            </a>
+            <a href="" class="w-full h-auto">
+                <img src="../img/followus_4.jpg" class="w-52 h-52 bg-cover">
+            </a>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="bg-[#091413] text-gray-400 py-10 px-8 mt-8">
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
+
+            <!-- Left: Newsletter -->
+            <div class="flex flex-col gap-4">
+                <p class="text-white font-bold text-xl">Sign Up to Newsletter</p>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Enter your email address to get $10 off your first order and free shipping.
+                    Updates information on Sales and Offers.
+                </p>
+                <!-- Input + Button inline -->
+                <div class="flex gap-3 mt-2">
+                    <input type="email" placeholder="Enter your email..."
+                        class="px-4 py-2 rounded-3xl w-full max-w-xs border border-white/10 bg-[#1a1a1a] text-white text-sm focus:outline-none focus:ring-2 focus:ring-yellow-300">
+                    <button
+                        class="bg-white text-black px-6 py-2 rounded-3xl text-sm font-semibold tracking-wide whitespace-nowrap">
+                        SUBSCRIBE
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right: Links -->
+            <div class="grid grid-cols-3 gap-6">
+                <div class="flex flex-col gap-3">
+                    <p class="text-white font-semibold text-sm mb-1">Hot Categories</p>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Special Offers</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Performance</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Top Brands</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Online Exclusive</a>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <p class="text-white font-semibold text-sm mb-1">Customer Service</p>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Refund Policy</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Shipping & Return</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Term & Conditions</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Advanced Search</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Store Locations</a>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <p class="text-white font-semibold text-sm mb-1">Custom Links</p>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Blog</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">My Account</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Wishlist</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white">Terms Of Service</a>
+                    <a href="#" class="text-yellow-400 text-sm hover:text-yellow-300">Purchase Theme</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
